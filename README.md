@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Skora — Console d'accompagnement pédagogique
 
-## Getting Started
+Frontend 100 % (Next.js 16 App Router + Tailwind v4 + TypeScript + framer-motion).
+Design glassmorphism (palette Skora `#dc3545`, violet d'accent, Instrument Sans).
 
-First, run the development server:
+La boucle complète d'accompagnement, démontrée à l'école :
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Bulletin (saisi à la main) → matière la plus basse = PRIORITÉ
+   → Test adaptatif niveau lycée (réussi → difficulté +1, raté → −1, chaque question taguée par notion)
+      → Lacunes diagnostiquées (sévérité = niveau le plus bas auquel la notion a cédé)
+         → Appels (contexte humain + auto-déclarations « ce que je ne comprends pas »)
+            → Fiches de renfort générées, calibrées sur le niveau d'échec
+               → Cahier de renfort imprimable (PDF) remis à l'apprenant
+                  → Re-test → la maîtrise remonte → lacunes « en amélioration » → « résolues »
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Démarrage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+pnpm dev        # → http://localhost:3000
+pnpm build      # vérification production
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Les 9 écrans
 
-## Learn More
+| Écran | Rôle |
+|---|---|
+| Vue d'ensemble | KPIs, priorités par score de risque, spotlight, lacunes par matière |
+| Élèves | Liste filtrable par risque, recherche, fiche complète en 5 onglets animés |
+| Diagnostics | Test adaptatif jouable en live (7 matières lycée, banque de ~80 questions) |
+| Appels | Historique structuré + planification, croisement déclarations ↔ lacunes |
+| Agenda | Appels planifiés, recommandations d'action, cadence |
+| Contenus | Fiches de renfort générées, consultation |
+| Bulletins | Saisie manuelle + inscription d'un nouvel élève (bulletin d'entrée) |
+| Impact école | La preuve chiffrée à présenter à l'établissement |
+| Paramètres | Console, équipe, identité visuelle |
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/(console)/        # les 9 écrans (AppRouter)
+  app/impression/       # cahier de renfort A4 (hors console, @media print)
+  components/           # ui · charts · generation · eleve · dashboard · test · appels · bulletins · impression · layout
+  features/             # risque (score 40/40/20) · test-adaptatif (moteur) · contenu (génération) · suivi
+  data/notions/         # banque lycée : maths, PC/SVT, FR/EN, HG/ECM (21 notions, ~84 questions)
+  data/mock.ts          # 8 élèves (faiblesses variées : maths, fr, SVT, ECM, anglais, PC, HG)
+  store.tsx             # état global + actions (enregistrerTest, ajouterEleve, …)
+  types/  lib/          # contrat de données · utils
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Convention : aucun fichier métier ne dépasse ~200 lignes (seules les données mock sont plus longues).
 
-## Deploy on Vercel
+## Rampe de mise en prod
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Les données sont mockées et l'état vit dans `store.tsx` : brancher les actions
+(`enregistrerTest`, `ajouterEleve`, `enregistrerAppel`, `planifierAppel`, `ajouterContenu`)
+sur l'API Skora suffit à passer en réel.

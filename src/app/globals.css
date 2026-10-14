@@ -1,26 +1,168 @@
 @import "tailwindcss";
 
+/* ── Palette Skora (identité projet skora) ───────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-50: #fff5f6;
+  --brand-100: #ffe6e9;
+  --brand-200: #ffcdd3;
+  --brand-300: #f7a1aa;
+  --brand-400: #eb6673;
+  --brand-500: #dc3545;
+  --brand-600: #c92f3e;
+  --brand-700: #ad2936;
+  --brand-800: #8f222d;
+  --brand-900: #741c25;
+  --brand: #dc3545;
+  --violet: #7c5cff;
+  --ink: #241f26;
+  --background: #f4f1f8;
+  --foreground: #241f26;
 }
 
 @theme inline {
+  --font-sans: var(--font-instrumental), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand: var(--brand);
+  --color-ink: var(--ink);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply text-foreground font-sans antialiased;
+    background-color: #f2eef7;
+    background-image:
+      radial-gradient(1100px 620px at 8% -10%, rgba(124, 92, 255, 0.16), transparent 60%),
+      radial-gradient(900px 560px at 96% 0%, rgba(236, 92, 110, 0.14), transparent 55%),
+      radial-gradient(1000px 700px at 50% 115%, rgba(255, 186, 120, 0.13), transparent 60%),
+      linear-gradient(160deg, #f7f4fb 0%, #f2eef9 45%, #faf3f0 100%);
+    background-attachment: fixed;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Verre dépoli (glassmorphism) ────────────────────────────────────── */
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/60 bg-white/60 shadow-[0_8px_32px_-12px_rgba(60,40,90,0.18)] backdrop-blur-2xl;
+  }
+  .glass-strong {
+    @apply rounded-2xl border border-white/70 bg-white/75 shadow-[0_12px_40px_-14px_rgba(60,40,90,0.22)] backdrop-blur-2xl;
+  }
+  .glass-soft {
+    @apply rounded-xl border border-white/50 bg-white/45 backdrop-blur-xl;
+  }
+  .glass-hover {
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/75 hover:shadow-[0_16px_40px_-14px_rgba(60,40,90,0.28)];
+  }
+  .btn-gradient {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(220,53,69,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-8px_rgba(220,53,69,0.6)] active:translate-y-0;
+    background-image: linear-gradient(135deg, #f0566a 0%, #dc3545 55%, #b32739 100%);
+  }
+  .btn-violet {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(124,92,255,0.55)] transition-all duration-300 hover:-translate-y-0.5;
+    background-image: linear-gradient(135deg, #9b7bff 0%, #7c5cff 60%, #6047e0 100%);
+  }
+  .icon-tile {
+    @apply flex h-10 w-10 items-center justify-center rounded-xl text-white;
+    background-image: linear-gradient(135deg, #f0566a, #dc3545);
+    box-shadow: 0 8px 20px -8px rgba(220, 53, 69, 0.55);
+  }
+}
+
+/* Scrollbar discrète */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 70, 110, 0.25);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(90, 70, 110, 0.4);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* Halo animé derrière le logo */
+@keyframes halo-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animate-halo {
+  background: conic-gradient(from 0deg, #f0566a, #7c5cff, #ffb478, #f0566a);
+  animation: halo-rotate 6s linear infinite;
+}
+
+/* Balayage horizontal (scanner Skora) */
+@keyframes horizontal-scan {
+  0% {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(250%);
+    opacity: 0;
+  }
+}
+.animate-horizontal-scan {
+  animation: horizontal-scan 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+/* ── Impression (cahier de renfort → PDF) ───────────────────────────── */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  html,
+  body {
+    background: #ffffff !important;
+    background-image: none !important;
+  }
+  .break-inside-avoid {
+    break-inside: avoid;
+  }
+  .break-before-page {
+    break-before: page;
+  }
+  details > summary {
+    list-style: none;
+  }
 }
