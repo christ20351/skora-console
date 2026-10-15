@@ -34,7 +34,7 @@ export function Modal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute inset-0 bg-[#2a2035]/30 backdrop-blur-md"
+            className="absolute inset-0 bg-ink/30"
             onClick={onClose}
           />
           <motion.div
@@ -42,13 +42,13 @@ export function Modal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", stiffness: 380, damping: 30 }}
-            className={`relative max-h-[88vh] w-full overflow-y-auto rounded-3xl border border-white/60 bg-white/90 shadow-2xl backdrop-blur-2xl ${
+            className={`relative max-h-[88vh] w-full overflow-y-auto rounded-3xl border border-slate-200/70 bg-white shadow-2xl ${
               large ? "max-w-3xl" : "max-w-lg"
             }`}
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 rounded-xl bg-white/70 p-1.5 text-slate-400 backdrop-blur transition-colors hover:bg-white hover:text-slate-700 print:hidden"
+              className="absolute top-4 right-4 z-10 rounded-xl bg-white p-1.5 text-slate-400 ring-1 ring-slate-200/70 transition-colors hover:text-slate-700 print:hidden"
               aria-label="Fermer"
             >
               <X size={17} />

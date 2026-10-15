@@ -25,7 +25,7 @@ export function CardHeader({
     <div className="flex items-start justify-between gap-4 border-b border-white/60 px-5 py-4">
       <div className="flex items-start gap-3">
         {icon ? (
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400/15 to-violet-500/15 text-brand-500">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-500">
             {icon}
           </div>
         ) : null}

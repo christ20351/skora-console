@@ -118,7 +118,7 @@ function IndicateurNiveau({ niveau }: { niveau: Niveau }) {
           key={n}
           title={NIVEAUX[n].nom}
           className={cn(
-            "flex h-6 w-9 items-center justify-center rounded-md text-[10px] font-bold transition-colors",
+            "flex h-6 w-9 items-center justify-center rounded-md text-xs font-bold transition-colors",
             n === niveau
               ? "bg-brand-500 text-white"
               : n < niveau

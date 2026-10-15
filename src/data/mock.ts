@@ -5,6 +5,7 @@ import type {
   Eleve,
   EtapeTest,
   Lacune,
+  RendezVous,
   TestAdaptatif,
 } from "@/types";
 
@@ -19,6 +20,29 @@ export const ELEVES: Eleve[] = [
   { id: "e6", prenom: "Ibrahima", nom: "Sow", niveauScolaire: "1ère C", ecole: "Lycée Technique", age: 16, inscritLe: "2026-09-15", couleur: "bg-indigo-500" },
   { id: "e7", prenom: "Mariam", nom: "Cissé", niveauScolaire: "Tle C", ecole: "Excellence Academy", age: 18, inscritLe: "2026-09-20", couleur: "bg-teal-500" },
   { id: "e8", prenom: "Séraphin", nom: "Mbemba", niveauScolaire: "1ère D", ecole: "Lycée Jean-Mermoz", age: 16, inscritLe: "2026-09-10", couleur: "bg-fuchsia-500" },
+  // ── Historique d'inscriptions (6 derniers mois) ──
+  { id: "e9", prenom: "Jean-Marc", nom: "Koffi", niveauScolaire: "2nde C", ecole: "Lycée Technique", age: 15, inscritLe: "2026-05-12", couleur: "bg-sky-500" },
+  { id: "e10", prenom: "Aïssata", nom: "Fofana", niveauScolaire: "1ère D", ecole: "Lycée Moderne", age: 16, inscritLe: "2026-05-15", couleur: "bg-rose-500" },
+  { id: "e11", prenom: "Serge", nom: "Bohoussou", niveauScolaire: "Tle C", ecole: "Excellence Academy", age: 18, inscritLe: "2026-05-22", couleur: "bg-indigo-500" },
+  { id: "e12", prenom: "Nafissa", nom: "Sawadogo", niveauScolaire: "2nde A", ecole: "Cours Baraka", age: 15, inscritLe: "2026-05-28", couleur: "bg-emerald-500" },
+  { id: "e13", prenom: "Emmanuel", nom: "Kouassi", niveauScolaire: "1ère C", ecole: "Lycée Technique", age: 17, inscritLe: "2026-06-03", couleur: "bg-amber-500" },
+  { id: "e14", prenom: "Rokia", nom: "Traoré", niveauScolaire: "Tle D", ecole: "Lycée Moderne", age: 18, inscritLe: "2026-06-05", couleur: "bg-violet-500" },
+  { id: "e15", prenom: "Franck", nom: "Assamoi", niveauScolaire: "2nde B", ecole: "Lycée Classique", age: 15, inscritLe: "2026-06-10", couleur: "bg-teal-500" },
+  { id: "e16", prenom: "Chimène", nom: "Aké", niveauScolaire: "1ère A1", ecole: "Lycée Classique", age: 16, inscritLe: "2026-06-16", couleur: "bg-fuchsia-500" },
+  { id: "e17", prenom: "Ousmane", nom: "Dembélé", niveauScolaire: "Tle A", ecole: "Lycée Classique", age: 18, inscritLe: "2026-06-19", couleur: "bg-sky-500" },
+  { id: "e18", prenom: "Grace", nom: "Zadi", niveauScolaire: "2nde C", ecole: "Groupe Scolaire La Réussite", age: 15, inscritLe: "2026-06-25", couleur: "bg-rose-500" },
+  { id: "e19", prenom: "Adama", nom: "Konaté", niveauScolaire: "1ère D", ecole: "Cours Baraka", age: 16, inscritLe: "2026-07-08", couleur: "bg-emerald-500" },
+  { id: "e20", prenom: "Léa", nom: "Gauze", niveauScolaire: "Tle D", ecole: "Lycée Jean-Mermoz", age: 17, inscritLe: "2026-07-21", couleur: "bg-indigo-500" },
+  { id: "e21", prenom: "Ismaël", nom: "Bamba", niveauScolaire: "2nde A", ecole: "Lycée Moderne", age: 15, inscritLe: "2026-08-14", couleur: "bg-amber-500" },
+  { id: "e22", prenom: "Estelle", nom: "Yapi", niveauScolaire: "1ère C", ecole: "Excellence Academy", age: 16, inscritLe: "2026-09-03", couleur: "bg-violet-500" },
+  { id: "e23", prenom: "Moumini", nom: "Ouédraogo", niveauScolaire: "2nde B", ecole: "Cours Baraka", age: 15, inscritLe: "2026-09-04", couleur: "bg-teal-500" },
+  { id: "e24", prenom: "Sarah", nom: "Ettien", niveauScolaire: "Tle C", ecole: "Lycée Jean-Mermoz", age: 17, inscritLe: "2026-09-11", couleur: "bg-fuchsia-500" },
+  { id: "e25", prenom: "Karim", nom: "Sangaré", niveauScolaire: "1ère A2", ecole: "Lycée Classique", age: 16, inscritLe: "2026-09-17", couleur: "bg-sky-500" },
+  { id: "e26", prenom: "Bénédicte", nom: "Okon", niveauScolaire: "2nde C", ecole: "Groupe Scolaire La Réussite", age: 15, inscritLe: "2026-09-22", couleur: "bg-rose-500" },
+  { id: "e27", prenom: "Souleymane", nom: "Doumbia", niveauScolaire: "Tle D", ecole: "Lycée Moderne", age: 18, inscritLe: "2026-09-28", couleur: "bg-emerald-500" },
+  { id: "e28", prenom: "Ange", nom: "Kessié", niveauScolaire: "1ère D", ecole: "Lycée Technique", age: 16, inscritLe: "2026-10-02", couleur: "bg-indigo-500" },
+  { id: "e29", prenom: "Fatoumata", nom: "Camara", niveauScolaire: "2nde A", ecole: "Cours Baraka", age: 15, inscritLe: "2026-10-07", couleur: "bg-amber-500" },
+  { id: "e30", prenom: "Wilfried", nom: "Kramo", niveauScolaire: "Tle A", ecole: "Excellence Academy", age: 18, inscritLe: "2026-10-12", couleur: "bg-violet-500" },
 ];
 
 /* ── Bulletins (saisis à la main, pas de scan) ───────────────────────── */
@@ -396,6 +420,202 @@ export const APPELS: Appel[] = [
     type: "parent", sentiment: "neutre", resume: "", points: [], declarations: [],
     prochaineEtape: "", statut: "planifie",
     motif: "Impliquer la famille dans le suivi quotidien des fiches de renfort.",
+  },
+  // ── Historique d'appels (6 derniers mois) ──
+  {
+    id: "a10", eleveId: "e9", date: "2026-05-14", dureeMin: 12, animateur: "Ferot",
+    type: "diagnostic", sentiment: "neutre",
+    resume: "Premier appel avec Jean-Marc : sérieux mais passé à côté des repères du programme de 2nde. On pose un rythme de travail hebdomadaire.",
+    points: ["Méthode de travail"], declarations: [],
+    prochaineEtape: "Test adaptatif de maths pour situer son niveau.", statut: "effectue",
+  },
+  {
+    id: "a11", eleveId: "e11", date: "2026-05-25", dureeMin: 15, animateur: "Adja",
+    type: "diagnostic", sentiment: "positif",
+    resume: "Serge est très à l'aise à l'oral, plus timide à l'écrit. Il vise une prépa scientifique : motivation solide, autonomie déjà là.",
+    points: ["Objectif prépa", "Autonomie"], declarations: [],
+    prochaineEtape: "Se concentrer sur la rédaction des raisonnements en maths.", statut: "effectue",
+  },
+  {
+    id: "a12", eleveId: "e13", date: "2026-06-04", dureeMin: 14, animateur: "Ferot",
+    type: "diagnostic", sentiment: "preoccupant",
+    resume: "Emmanuel accumule des lacunes en trigonométrie depuis la 2nde et évite les exercices concernés. Il minimise, mais le découragement affleure.",
+    points: ["Évitement", "Bases de 2nde"], declarations: ["Trigonométrie"],
+    prochaineEtape: "Reprendre le cercle trigonométrique à zéro avant la 1ère.", statut: "effectue",
+  },
+  {
+    id: "a13", eleveId: "e14", date: "2026-06-09", dureeMin: 11, animateur: "Adja",
+    type: "diagnostic", sentiment: "neutre",
+    resume: "Rokia gère son temps entre le commerce de sa mère et les révisions. Les dissertations d'histoire-géo restent inachevées faute de méthode.",
+    points: ["Gestion du temps", "Méthode de rédaction"], declarations: ["Dissertation d'histoire"],
+    prochaineEtape: "Fiche méthode dissertation + plan de révision réaliste.", statut: "effectue",
+  },
+  {
+    id: "a14", eleveId: "e17", date: "2026-06-22", dureeMin: 18, animateur: "Ferot",
+    type: "diagnostic", sentiment: "positif",
+    resume: "Ousmane veut une filière droit. Très bon niveau en français, il bute seulement sur la contraction de texte. Bonne dynamique générale.",
+    points: ["Objectif droit", "Excellence à l'écrit"], declarations: ["Contraction de texte"],
+    prochaineEtape: "Deux entraînements de contraction avant la rentrée.", statut: "effectue",
+  },
+  {
+    id: "a15", eleveId: "e19", date: "2026-07-10", dureeMin: 13, animateur: "Adja",
+    type: "suivi-renfort", sentiment: "neutre",
+    resume: "Adama a travaillé les fiches de SVT pendant les premières semaines de vacances. Les schémas l'aident, il demande la suite du programme.",
+    points: ["Assiduité vacances"], declarations: [],
+    prochaineEtape: "Envoyer le lot de fiches génétique pour juillet.", statut: "effectue",
+  },
+  {
+    id: "a16", eleveId: "e22", date: "2026-09-08", dureeMin: 12, animateur: "Ferot",
+    type: "diagnostic", sentiment: "neutre",
+    resume: "Estelle arrive du cours Baraka avec des bases fragiles en maths mais une réelle volonté de rattraper. Elle note tout, sans hiérarchiser.",
+    points: ["Motivation", "Prise de notes"], declarations: ["Fonctions de référence"],
+    prochaineEtape: "Test adaptatif maths + fiche fonctions de référence.", statut: "effectue",
+  },
+  {
+    id: "a17", eleveId: "e24", date: "2026-09-14", dureeMin: 16, animateur: "Adja",
+    type: "diagnostic", sentiment: "positif",
+    resume: "Sarah prépare le Bac C. La mécanique quantique du programme la passionne déjà, mais les intégrales la freinent encore.",
+    points: ["Objectif Bac C", "Curiosité scientifique"], declarations: ["Intégrales"],
+    prochaineEtape: "Renfort intégrales calibré N2, puis évaluation dans un mois.", statut: "effectue",
+  },
+  {
+    id: "a18", eleveId: "e25", date: "2026-09-19", dureeMin: 10, animateur: "Ferot",
+    type: "diagnostic", sentiment: "neutre",
+    resume: "Karim parle un anglais courant appris en ligne mais écrit sans structure : ponctuation et connecteurs logiques manquent. Confiance en hausse.",
+    points: ["Exposition à la langue", "Structure à l'écrit"], declarations: ["Connecteurs logiques"],
+    prochaineEtape: "Fiche connecteurs + production écrite hebdomadaire.", statut: "effectue",
+  },
+  {
+    id: "a19", eleveId: "e27", date: "2026-09-30", dureeMin: 14, animateur: "Adja",
+    type: "diagnostic", sentiment: "preoccupant",
+    resume: "Souleymane redouble la Tle D. Il avoue avoir « recopié sans comprendre » l'an dernier : la philosophie du programme lui échappe en SVT.",
+    points: ["Redoublement", "Compréhension superficielle"], declarations: ["Respiration & photosynthèse"],
+    prochaineEtape: "Reprendre les mécanismes fondamentaux avant les nouveaux chapitres.", statut: "effectue",
+  },
+  {
+    id: "a20", eleveId: "e28", date: "2026-10-04", dureeMin: 15, animateur: "Ferot",
+    type: "diagnostic", sentiment: "neutre",
+    resume: "Ange vient d'arriver au lycée Technique. Les suites l'inquiètent déjà : il confond récurrence et monotonie. Bon réflexe de questionner.",
+    points: ["Nouvel établissement"], declarations: ["Suites numériques"],
+    prochaineEtape: "Fiche suites + point dans deux semaines.", statut: "effectue",
+  },
+  {
+    id: "a21", eleveId: "e29", date: "2026-10-09", dureeMin: 12, animateur: "Adja",
+    type: "diagnostic", sentiment: "positif",
+    resume: "Fatoumata est la première de sa famille au lycée : pression forte à la maison mais énergie impressionnante. Bases de 2nde solides.",
+    points: ["Première génération au lycée", "Motivation"], declarations: [],
+    prochaineEtape: "La suivre sur le passage 2nde → 1ère A.", statut: "effectue",
+  },
+  {
+    id: "a22", eleveId: "e30", date: "2026-10-13", dureeMin: 17, animateur: "Ferot",
+    type: "diagnostic", sentiment: "neutre",
+    resume: "Wilfried vise une école de commerce. Correct en maths, il perd des points sur les rédactions en français : plan d'attaque manquant.",
+    points: ["Objectif école de commerce"], declarations: ["Plan de dissertation"],
+    prochaineEtape: "Atelier plan de dissertation en Meet cette semaine.", statut: "effectue",
+  },
+];
+
+/* ── Rendez-vous Meet (synchronisés Google Calendar) ─────────────────── */
+
+export const MEETS: RendezVous[] = [
+  // ── À venir ──
+  {
+    id: "m1", eleveId: "e1", sujet: "Point renfort — suites numériques", type: "suivi-renfort",
+    date: "2026-10-15", heure: "15:00", dureeMin: 30, assigneA: "Ferot", assignePar: "Ferot",
+    statut: "a-venir", googleEventId: "gcal-m1",
+    meetLink: "https://meet.google.com/sko-abcd-efg",
+  },
+  {
+    id: "m2", eleveId: "e8", sujet: "Bilan de renfort avec la famille", type: "parent",
+    date: "2026-10-15", heure: "10:00", dureeMin: 45, assigneA: "Adja", assignePar: "Ferot",
+    statut: "a-venir", googleEventId: "gcal-m2",
+    meetLink: "https://meet.google.com/sko-ghij-klm",
+  },
+  {
+    id: "m3", eleveId: "e5", sujet: "Session orale — conditionnels", type: "suivi-renfort",
+    date: "2026-10-16", heure: "14:00", dureeMin: 30, assigneA: "Adja", assignePar: "Ferot",
+    statut: "a-venir", googleEventId: "gcal-m3",
+    meetLink: "https://meet.google.com/sko-nopq-rst",
+  },
+  {
+    id: "m4", eleveId: "e4", sujet: "Prise de contact & tour de la console", type: "diagnostic",
+    date: "2026-10-19", heure: "11:00", dureeMin: 20, assigneA: "Ferot", assignePar: "Ferot",
+    statut: "a-venir", googleEventId: "gcal-m4",
+    meetLink: "https://meet.google.com/sko-uvwx-yz",
+  },
+  {
+    id: "m9", eleveId: "e7", sujet: "Orientation — concours d'ingénieur, point 2", type: "suivi-renfort",
+    date: "2026-10-20", heure: "17:00", dureeMin: 30, assigneA: "", assignePar: "Ferot",
+    statut: "a-venir", googleEventId: "gcal-m9",
+    meetLink: "https://meet.google.com/sko-aaaa-bbb",
+  },
+  {
+    id: "m11", eleveId: "e30", sujet: "Atelier plan de dissertation", type: "suivi-renfort",
+    date: "2026-10-21", heure: "16:00", dureeMin: 40, assigneA: "Adja", assignePar: "Ferot",
+    statut: "a-venir", googleEventId: "gcal-m11",
+    meetLink: "https://meet.google.com/sko-cccc-ddd",
+  },
+  {
+    id: "m10", eleveId: "e22", sujet: "Premier test de suivi maths", type: "suivi-renfort",
+    date: "2026-10-22", heure: "10:30", dureeMin: 30, assigneA: "", assignePar: "Ferot",
+    statut: "a-venir", googleEventId: "gcal-m10",
+    meetLink: "https://meet.google.com/sko-eeee-fff",
+  },
+  {
+    id: "m12", eleveId: "e29", sujet: "Point de départ — SVT 2nde", type: "diagnostic",
+    date: "2026-10-23", heure: "09:00", dureeMin: 30, assigneA: "", assignePar: "Ferot",
+    statut: "a-venir", googleEventId: "gcal-m12",
+    meetLink: "https://meet.google.com/sko-gggg-hhh",
+  },
+
+  // ── Passés (notes Google Meet disponibles) ──
+  {
+    id: "m5", eleveId: "e2", sujet: "Atelier rédaction argumentative", type: "suivi-renfort",
+    date: "2026-10-12", heure: "16:00", dureeMin: 40, assigneA: "Adja", assignePar: "Ferot",
+    statut: "termine", googleEventId: "gcal-m5", conferenceId: "conf-m5",
+    meetLink: "https://meet.google.com/sko-mnop-qrs",
+    resumeMeet: {
+      texte: "Atelier d'écriture en partage d'écran : Kouadio a rédigé un paragraphe argumentatif sur le thème « faut-il protéger ses sources ? », en lien avec son projet de journalisme. La structure thèse–argument–exemple reste à consolider : les connecteurs logiques apparaissent surtout en fin de paragraphe. Les figures de style repérées à l'oral la semaine passée ont bien été réinvesties à l'écrit (deux comparaisons justes).",
+      pointsCles: ["Plan thèse–argument–exemple", "Connecteurs logiques", "Réinvestissement des figures de style"],
+      declarations: ["Argumentation & dissertation"],
+      prochaineEtape: "Rédiger un deuxième paragraphe seul, corrigé ensemble au prochain Meet.",
+      sentiment: "positif",
+      dureeReelleMin: 44,
+    },
+  },
+  {
+    id: "m6", eleveId: "e3", sujet: "Préparation concours — immunologie", type: "suivi-renfort",
+    date: "2026-10-09", heure: "09:30", dureeMin: 30, assigneA: "Ferot", assignePar: "Ferot",
+    statut: "termine", googleEventId: "gcal-m6", conferenceId: "conf-m6",
+    meetLink: "https://meet.google.com/sko-tuvw-xyz",
+    resumeMeet: {
+      texte: "Reprise du fiche renfort immunologie avec schémas : Fatou explique désormais le rôle des lymphocytes T cytotoxiques sans lire ses notes. La distinction immunité innée / adaptative est acquise ; confusion résiduelle entre anticorps et antigène. Elle a blocké sur deux QCM du concours blanc, tous deux sur la sérologie.",
+      pointsCles: ["Lymphocytes T maîtrisés", "Anticorps vs antigène", "Sérologie à revoir"],
+      declarations: ["Immunité & vaccination"],
+      prochaineEtape: "Fiche sérologie + auto-évaluation avant la session du 20/10.",
+      sentiment: "positif",
+      dureeReelleMin: 31,
+    },
+  },
+  {
+    id: "m7", eleveId: "e6", sujet: "Remise à niveau Newton — séance 2", type: "suivi-renfort",
+    date: "2026-10-07", heure: "15:30", dureeMin: 30, assigneA: "Ferot", assignePar: "Ferot",
+    statut: "termine", googleEventId: "gcal-m7", conferenceId: "conf-m7",
+    meetLink: "https://meet.google.com/sko-defg-hij",
+    resumeMeet: {
+      texte: "Deuxième séance sur les lois de Newton. Ibrahima applique correctement ΣF = ma sur des situations simples (objet posé, chute libre) ; il hésite encore quand deux forces ont le même point d'application mais des directions différentes. Le tableau des forces complété en début de séance l'a débloqué. Moral en hausse par rapport au diagnostic : « en fait c'est juste du logique ».",
+      pointsCles: ["ΣF = ma appliqué seul", "Tableau des forces", "Confiance en hausse"],
+      declarations: ["Lois de Newton"],
+      prochaineEtape: "Exercices sur les plans inclinés avant la séance 3.",
+      sentiment: "neutre",
+      dureeReelleMin: 28,
+    },
+  },
+  {
+    id: "m8", eleveId: "e7", sujet: "Orientation — concours d'ingénieur", type: "suivi-renfort",
+    date: "2026-10-05", heure: "17:00", dureeMin: 30, assigneA: "Adja", assignePar: "Ferot",
+    statut: "annule", googleEventId: "gcal-m8",
+    meetLink: "https://meet.google.com/sko-klmn-opq",
   },
 ];
 

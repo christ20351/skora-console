@@ -103,10 +103,10 @@ export function CahierDiagnostic({
                 <p className="text-sm">
                   <strong>{notion.nom}</strong>
                   <span className="ml-2 text-slate-500">({notion.matiere})</span>
-                  <span className="ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-[11px] font-bold text-brand-600">
+                  <span className="ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-xs font-bold text-brand-600">
                     {SEVERITE_LABEL[l.severite]}
                   </span>
-                  <span className="ml-2 text-[11px] text-slate-400">
+                  <span className="ml-2 text-xs text-slate-400">
                     maîtrise {l.maitrisePct} % · suivi : {STATUT_LACUNE_LABEL[l.statut]}
                   </span>
                 </p>
@@ -156,7 +156,7 @@ function Titre({ children }: { children: React.ReactNode }) {
 function Bloc({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="rounded-lg border border-slate-200 p-3">
-      <p className="mb-1 text-[10px] font-bold tracking-wide text-slate-400 uppercase">{label}</p>
+      <p className="mb-1 text-xs font-bold tracking-wide text-slate-400 uppercase">{label}</p>
       <p className="text-xs">{children}</p>
     </div>
   );

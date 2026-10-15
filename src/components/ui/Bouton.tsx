@@ -26,7 +26,7 @@ export function Bouton({
       className={cn(
         "inline-flex items-center justify-center gap-1.5 rounded-xl font-semibold transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50",
         taille === "sm" ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm",
-        variant === "primaire" && "btn-gradient",
+        variant === "primaire" && "btn-brand",
         variant === "secondaire" &&
           "glass-soft text-slate-700 hover:bg-white/75 hover:-translate-y-0.5",
         variant === "fantome" && "text-slate-600 hover:bg-white/60 hover:text-ink",

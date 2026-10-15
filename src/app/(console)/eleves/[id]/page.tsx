@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { FicheEnTete } from "@/components/eleve/FicheEnTete";
 import { OngletSynthese } from "@/components/eleve/OngletSynthese";
+import { OngletDiagnostic } from "@/components/eleve/OngletDiagnostic";
 import { OngletLacunes } from "@/components/eleve/OngletLacunes";
 import { OngletTests } from "@/components/eleve/OngletTests";
 import { OngletAppels } from "@/components/eleve/OngletAppels";
@@ -17,6 +18,7 @@ import { cn } from "@/lib/utils";
 
 const ONGLETS = [
   { cle: "synthese", label: "Synthèse" },
+  { cle: "diagnostic", label: "Diagnostic" },
   { cle: "lacunes", label: "Lacunes" },
   { cle: "tests", label: "Tests" },
   { cle: "appels", label: "Appels" },
@@ -58,7 +60,7 @@ export default function PageFicheEleve() {
               onClick={() => setOnglet(o.cle)}
               className={cn(
                 "relative rounded-xl px-4 py-2 text-sm font-semibold transition-colors",
-                on ? "text-brand-600" : "text-slate-500 hover:text-ink"
+                on ? "text-ink" : "text-slate-500 hover:text-slate-700"
               )}
             >
               {on ? (
@@ -81,6 +83,7 @@ export default function PageFicheEleve() {
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       >
         {onglet === "synthese" ? <OngletSynthese eleve={eleve} /> : null}
+        {onglet === "diagnostic" ? <OngletDiagnostic eleve={eleve} /> : null}
         {onglet === "lacunes" ? <OngletLacunes eleveId={eleve.id} /> : null}
         {onglet === "tests" ? <OngletTests eleveId={eleve.id} /> : null}
         {onglet === "appels" ? <OngletAppels eleveId={eleve.id} /> : null}

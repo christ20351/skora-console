@@ -33,18 +33,18 @@ export function CheminAdaptatif({ test }: { test: TestAdaptatif }) {
               <span className="text-xs font-medium text-slate-700">{nom}</span>
               <span
                 className={cn(
-                  "rounded px-1 py-0.5 text-[10px] font-bold",
+                  "rounded px-1 py-0.5 text-xs font-bold",
                   e.correct ? "bg-emerald-100 text-emerald-600" : "bg-brand-100 text-brand-600"
                 )}
               >
                 {NIVEAUX[e.niveauAvant].court}
               </span>
               {!e.correct ? (
-                <span className="text-[10px] font-semibold text-brand-400">
+                <span className="text-xs font-semibold text-brand-400">
                   ↓ {NIVEAUX[e.niveauApres].court}
                 </span>
               ) : e.niveauApres > e.niveauAvant ? (
-                <span className="text-[10px] font-semibold text-emerald-500">
+                <span className="text-xs font-semibold text-emerald-500">
                   ↑ {NIVEAUX[e.niveauApres].court}
                 </span>
               ) : null}

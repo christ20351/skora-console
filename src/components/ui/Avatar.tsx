@@ -3,12 +3,11 @@ import { cn } from "@/lib/utils";
 export function Avatar({
   prenom,
   nom,
-  couleur,
   taille = "md",
 }: {
   prenom: string;
   nom: string;
-  couleur: string;
+  couleur?: string;
   taille?: "sm" | "md" | "lg";
 }) {
   const tailles = {
@@ -19,8 +18,7 @@ export function Avatar({
   return (
     <div
       className={cn(
-        "flex shrink-0 items-center justify-center rounded-full font-semibold text-white ring-2 ring-white/80 shadow-[0_6px_16px_-6px_rgba(70,40,90,0.4)]",
-        couleur,
+        "flex shrink-0 items-center justify-center rounded-full bg-slate-400 font-semibold text-white ring-2 ring-white/80 shadow-[0_5px_12px_-6px_rgba(15,23,42,0.3)]",
         tailles[taille]
       )}
     >

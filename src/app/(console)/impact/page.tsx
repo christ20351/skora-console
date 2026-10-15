@@ -140,10 +140,10 @@ function Tuile({
         <span className={`flex h-9 w-9 items-center justify-center rounded-xl text-white shadow-[0_8px_18px_-8px_rgba(70,40,110,0.5)] bg-gradient-to-br ${tile}`}>
           <Icon size={16} />
         </span>
-        <span className="text-[11px] leading-4 font-semibold text-slate-500">{label}</span>
+        <span className="text-xs leading-4 font-semibold text-slate-500">{label}</span>
       </div>
       <p className="mt-3 text-2xl font-bold tracking-tight text-ink">{valeur}</p>
-      <p className="mt-0.5 text-[11px] text-slate-400">{note}</p>
+      <p className="mt-0.5 text-xs text-slate-400">{note}</p>
     </div>
   );
 }

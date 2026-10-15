@@ -2,20 +2,11 @@
 
 import { useState } from "react";
 import { CalendarPlus, PhoneCall } from "lucide-react";
-import { ANIMATEURS } from "@/lib/constantes";
 import { formatDate } from "@/lib/utils";
 import { TYPE_APPEL_LABEL } from "@/types";
-import type { Appel, TypeAppel } from "@/types";
+import type { TypeAppel } from "@/types";
 import { useStore } from "@/store";
-import {
-  Badge,
-  BadgeSentiment,
-  Bouton,
-  Card,
-  CardHeader,
-  EmptyState,
-  Modal,
-} from "@/components/ui";
+import { Bouton, Card, CardHeader, EmptyState, Modal } from "@/components/ui";
 import { AppelCard } from "@/components/appels/AppelCard";
 
 /** Onglet Appels : historique structuré + planification */
@@ -90,11 +81,11 @@ function PlanifierModal({
   onClose: () => void;
   eleveId: string;
 }) {
-  const { planifierAppel } = useStore();
+  const { planifierAppel, utilisateurs } = useStore();
   const [date, setDate] = useState("");
   const [type, setType] = useState<TypeAppel>("suivi-renfort");
   const [motif, setMotif] = useState("");
-  const [animateur, setAnimateur] = useState(ANIMATEURS[0]);
+  const [animateur, setAnimateur] = useState(utilisateurs[0]?.nom ?? "");
 
   const valider = () => {
     if (!date || !motif.trim()) return;
@@ -140,8 +131,8 @@ function PlanifierModal({
             onChange={(e) => setAnimateur(e.target.value)}
             className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm outline-none focus:border-brand-400"
           >
-            {ANIMATEURS.map((a) => (
-              <option key={a}>{a}</option>
+            {utilisateurs.map((u) => (
+              <option key={u.id}>{u.nom}</option>
             ))}
           </select>
         </div>

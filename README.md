@@ -31,7 +31,7 @@ pnpm build      # vérification production
 | Élèves | Liste filtrable par risque, recherche, fiche complète en 5 onglets animés |
 | Diagnostics | Test adaptatif jouable en live (7 matières lycée, banque de ~80 questions) |
 | Appels | Historique structuré + planification, croisement déclarations ↔ lacunes |
-| Agenda | Appels planifiés, recommandations d'action, cadence |
+| Agenda | Meets liés à Google Calendar : vues mois / semaine (glisser-déposer pour replanifier) et tableau (date-heure éditables en ligne) ; clic sur un appel passé → notes Google Meet ; rôles : l'admin voit tout et assigne, un animateur ne voit que ses visios |
 | Contenus | Fiches de renfort générées, consultation |
 | Bulletins | Saisie manuelle + inscription d'un nouvel élève (bulletin d'entrée) |
 | Impact école | La preuve chiffrée à présenter à l'établissement |
@@ -56,5 +56,30 @@ Convention : aucun fichier métier ne dépasse ~200 lignes (seules les données 
 ## Rampe de mise en prod
 
 Les données sont mockées et l'état vit dans `store.tsx` : brancher les actions
-(`enregistrerTest`, `ajouterEleve`, `enregistrerAppel`, `planifierAppel`, `ajouterContenu`)
-sur l'API Skora suffit à passer en réel.
+(`enregistrerTest`, `ajouterEleve`, `enregistrerAppel`, `planifierAppel`, `ajouterContenu`,
+`deplacerMeet`, `assignerMeet`) sur l'API Skora suffit à passer en réel.
+
+## Agenda & Google Calendar
+
+L'agenda est synchronisé avec Google Calendar :
+
+- **Replanification** — glisser-déposer d'une visio (vues mois/semaine) ou édition
+  de la date et de l'heure dans le tableau : la modification est appliquée
+  localement puis poussée vers l'événement via `PATCH /api/agenda/events/[id]`.
+- **Assignation** — réservée au rôle admin : l'animateur assigné est stocké dans
+  les propriétés privées de l'événement (`extendedProperties.skoraAssignee`) et
+  chaque animateur ne voit que les visios qui lui sont assignées.
+- **Notes Meet** — les visios passées exposent leurs notes (« Prendre des notes
+  pour moi ») dans la fenêtre de détail, avec points clés, déclarations de
+  l'apprenant et prochaine étape.
+
+Sans configuration, la console tourne en **mode démo** (badge ambre dans
+l'agenda : les changements restent locaux). Pour la synchronisation réelle :
+
+1. Créer un compte de service Google avec le scope `…/auth/calendar`
+   (`src/lib/google-calendar.ts` signe un JWT RS256, aucune dépendance requise).
+2. Partager l'agenda cible avec ce compte de service (droit « apporter des
+   modifications aux événements »).
+3. Renseigner `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY`,
+   `GOOGLE_CALENDAR_ID` (voir `.env.example`), redémarrer : le badge devient
+   « Google Calendar connecté » et chaque déplacement/assignation est propagé.

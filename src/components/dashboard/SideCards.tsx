@@ -60,7 +60,7 @@ export function Spotlight() {
   return (
     <Card className="overflow-hidden border-white/50 !p-0">
       <div className="relative bg-gradient-to-br from-violet-500/15 via-brand-500/10 to-amber-400/15 px-5 pt-5 pb-4">
-        <p className="text-[10px] font-bold tracking-[0.14em] text-slate-500 uppercase">
+        <p className="text-xs font-bold tracking-[0.14em] text-slate-500 uppercase">
           Priorité n°1
         </p>
         <div className="mt-3 flex items-center gap-4">
@@ -128,7 +128,7 @@ export function AppelsAVenir() {
                   </p>
                   <p className="truncate text-xs text-slate-400">{a.motif}</p>
                 </div>
-                <span className="shrink-0 rounded-lg bg-brand-400/15 px-2 py-1 text-[11px] font-bold text-brand-600">
+                <span className="shrink-0 rounded-lg bg-brand-400/15 px-2 py-1 text-xs font-bold text-brand-600">
                   {formatDate(a.date)}
                 </span>
               </Link>

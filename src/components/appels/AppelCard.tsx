@@ -30,13 +30,13 @@ export function AppelCard({ appel }: { appel: Appel }) {
       ) : null}
 
       {appel.declarations.length > 0 ? (
-        <div className="mt-2 flex flex-wrap items-center gap-1.5 rounded-lg bg-violet-50 px-3 py-2">
-          <MessageSquare size={13} className="text-violet-500" />
-          <span className="text-xs font-semibold text-violet-700">
+        <div className="mt-2 flex flex-wrap items-center gap-1.5 rounded-lg bg-slate-50 px-3 py-2 ring-1 ring-slate-200/70">
+          <MessageSquare size={13} className="text-slate-400" />
+          <span className="text-xs font-semibold text-slate-600">
             L'élève déclare ne pas comprendre :
           </span>
           {appel.declarations.map((d) => (
-            <span key={d} className="text-xs font-medium text-violet-600">
+            <span key={d} className="text-xs font-medium text-ink">
               {d}
             </span>
           ))}

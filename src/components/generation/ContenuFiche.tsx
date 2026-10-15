@@ -86,7 +86,7 @@ export function ContenuFiche({ contenu }: { contenu: ContenuGenere }) {
                   <span className="text-slate-700">{ex.enonce}</span>
                 </span>
                 <span className="flex shrink-0 items-center gap-2">
-                  <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-bold text-slate-500">
+                  <span className="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-bold text-slate-500">
                     {NIVEAUX[ex.niveau].court}
                   </span>
                   <ChevronDown

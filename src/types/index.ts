@@ -3,4 +3,8 @@ export * from "./test";
 export * from "./lacune";
 export * from "./appel";
 export * from "./contenu";
+export * from "./diagnostic";
+export * from "./examen";
+export * from "./meet";
 export * from "./risque";
+export * from "./utilisateur";

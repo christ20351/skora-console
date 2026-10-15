@@ -24,7 +24,7 @@ export function CahierRenfort({ eleve }: { eleve: Eleve }) {
     .at(0);
 
   return (
-    <div className="mx-auto max-w-[820px] space-y-6 text-[13px] leading-relaxed text-slate-800">
+    <div className="mx-auto max-w-[820px] space-y-6 text-xs leading-relaxed text-slate-800">
       {/* Barre d'actions (masquée à l'impression) */}
       <div className="print:hidden sticky top-0 z-10 -mx-6 flex items-center justify-between border-b border-slate-200 bg-white/90 px-6 py-3 backdrop-blur">
         <Link href={`/eleves/${eleve.id}`} className="text-sm font-medium text-slate-500 hover:text-slate-800">
@@ -88,7 +88,7 @@ export function CahierRenfort({ eleve }: { eleve: Eleve }) {
           </p>
           <div className="mt-3 grid grid-cols-4 gap-2">
             {["Semaine 1", "Semaine 2", "Semaine 3", "Semaine 4"].map((s) => (
-              <div key={s} className="rounded border border-dashed border-slate-300 p-2 text-center text-[10px] text-slate-400">
+              <div key={s} className="rounded border border-dashed border-slate-300 p-2 text-center text-xs text-slate-400">
                 <p className="font-semibold text-slate-500">{s}</p>
                 <p className="mt-4">notes…</p>
               </div>
@@ -109,7 +109,7 @@ export function CahierRenfort({ eleve }: { eleve: Eleve }) {
         </section>
       ) : null}
 
-      <footer className="break-inside-avoid border-t border-slate-200 pt-3 text-center text-[11px] text-slate-400">
+      <footer className="break-inside-avoid border-t border-slate-200 pt-3 text-center text-xs text-slate-400">
         Skora — accompagnement pédagogique personnalisé · Cahier généré le {formatDate(AUJOURDHUI)} à
         partir du diagnostic de {eleve.prenom} {eleve.nom}
       </footer>

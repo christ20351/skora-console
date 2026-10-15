@@ -6,53 +6,48 @@ import { motion } from "framer-motion";
 import {
   BookOpenCheck,
   CalendarDays,
-  ClipboardList,
   Compass,
+  GraduationCap,
   LayoutDashboard,
-  LineChart,
   PhoneCall,
-  Plus,
   Search,
-  Settings,
-  Target,
   Users,
+  UsersRound,
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { ANNEE_SCOLAIRE, AUJOURDHUI } from "@/lib/constantes";
 import { cn, formatDate } from "@/lib/utils";
+import { useStore } from "@/store";
+import { ROLE_LABEL } from "@/types";
 
 const NAV = [
   { section: "Pilotage", items: [
     { href: "/", label: "Vue d'ensemble", icon: LayoutDashboard },
-    { href: "/eleves", label: "Élèves", icon: Users },
-    { href: "/diagnostics", label: "Diagnostics", icon: Target, badge: "Live" },
+    { href: "/eleves", label: "Apprenants", icon: Users },
+    { href: "/equipe", label: "Équipe", icon: UsersRound },
   ] },
   { section: "Accompagnement", items: [
     { href: "/appels", label: "Appels", icon: PhoneCall },
     { href: "/agenda", label: "Agenda", icon: CalendarDays },
     { href: "/contenus", label: "Contenus", icon: BookOpenCheck },
-    { href: "/bulletins", label: "Bulletins", icon: ClipboardList },
-  ] },
-  { section: "Général", items: [
-    { href: "/impact", label: "Impact école", icon: LineChart },
-    { href: "/parametres", label: "Paramètres", icon: Settings },
+    { href: "/examens", label: "Examens", icon: GraduationCap },
   ] },
 ];
 
 const TITRES: Record<string, { titre: string; sousTitre: string }> = {
-  "/": { titre: "Vue d'ensemble", sousTitre: "Le pouls de l'accompagnement, en un coup d'œil" },
-  "/eleves": { titre: "Élèves", sousTitre: "Chaque élève, son diagnostic, son plan d'accompagnement" },
+  "/": { titre: "Vue d'ensemble", sousTitre: "Rendez-vous, inscriptions et résultats, en un coup d'œil" },
+  "/eleves": { titre: "Apprenants", sousTitre: "Chaque apprenant, son diagnostic, son plan d'accompagnement" },
   "/diagnostics": { titre: "Diagnostics", sousTitre: "Tests adaptatifs : réussi → la difficulté monte, raté → elle descend" },
+  "/equipe": { titre: "Équipe", sousTitre: "Invitez vos animateurs, ajustez les rôles, suivez la charge" },
   "/appels": { titre: "Appels", sousTitre: "Le contexte humain derrière les statistiques" },
-  "/agenda": { titre: "Agenda", sousTitre: "Ce qui attend une action cette semaine" },
+  "/agenda": { titre: "Agenda", sousTitre: "Meets synchronisés Google Calendar — glissez pour replanifier" },
   "/contenus": { titre: "Contenus", sousTitre: "Fiches de renfort calibrées sur chaque lacune" },
-  "/bulletins": { titre: "Bulletins", sousTitre: "Saisie manuelle des bulletins et inscription des élèves" },
-  "/impact": { titre: "Impact école", sousTitre: "Les résultats de l'accompagnement, en chiffres" },
-  "/parametres": { titre: "Paramètres", sousTitre: "Console, équipe et présentation" },
+  "/examens": { titre: "Examens", sousTitre: "Copies et sujets suivis par matière, lisibles en Markdown" },
 };
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const { utilisateur } = useStore();
   const estFiche = pathname.startsWith("/eleves/");
   const meta = estFiche
     ? { titre: "Fiche élève", sousTitre: "Diagnostic, lacunes et plan d'accompagnement" }
@@ -61,19 +56,19 @@ export function AppShell({ children }: { children: ReactNode }) {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-[1680px] gap-5 p-4 lg:p-5">
-      {/* ── Sidebar flottante ── */}
-      <aside className="glass sticky top-5 hidden h-[calc(100vh-2.5rem)] w-64 shrink-0 flex-col overflow-hidden lg:flex">
-        <Link href="/" className="flex items-center gap-3 px-5 pt-6 pb-5">
-          <span className="relative flex h-11 w-11 items-center justify-center">
-            <span className="animate-halo absolute inset-0 rounded-2xl opacity-80 blur-[6px]" />
-            <span className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-white/85 shadow-inner">
-              <Compass size={22} className="text-brand-500" />
+    <div className="flex min-h-screen">
+      {/* ── Sidebar collée au bord gauche ── */}
+      <aside className="glass sticky top-0 hidden h-screen w-52 shrink-0 flex-col overflow-hidden rounded-none lg:flex">
+        <Link href="/" className="flex items-center gap-3 px-4 pt-5 pb-4">
+          <span className="relative flex h-10 w-10 items-center justify-center">
+            <span className="logo-glow absolute inset-0 rounded-xl opacity-50 blur-[6px]" />
+            <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white/85 shadow-inner">
+              <Compass size={20} className="text-slate-500" />
             </span>
           </span>
           <span>
-            <span className="block text-lg leading-5 font-bold tracking-tight text-ink">Skora</span>
-            <span className="block text-[11px] leading-4 text-slate-500">Console d'accompagnement</span>
+            <span className="block text-base leading-5 font-bold tracking-tight text-ink">Skora</span>
+            <span className="block text-[11px] leading-4 text-slate-500">Console d&apos;accompagnement</span>
           </span>
         </Link>
 
@@ -91,24 +86,19 @@ export function AppShell({ children }: { children: ReactNode }) {
                       key={item.href}
                       href={item.href}
                       className={cn(
-                        "relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
-                        on ? "text-brand-600" : "text-slate-600 hover:text-ink"
+                        "relative flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium transition-colors",
+                        on ? "text-ink" : "text-slate-600 hover:text-slate-700"
                       )}
                     >
                       {on ? (
                         <motion.span
                           layoutId="nav-pill"
-                          className="absolute inset-0 rounded-xl border border-white/70 bg-white/85 shadow-[0_6px_20px_-8px_rgba(90,60,120,0.25)]"
+                          className="absolute inset-0 rounded-xl bg-slate-100 ring-1 ring-slate-200/70"
                           transition={{ type: "spring", stiffness: 420, damping: 34 }}
                         />
                       ) : null}
-                      <item.icon size={17} className={cn("relative z-10", on ? "text-brand-500" : "text-slate-400")} />
+                      <item.icon size={16} className={cn("relative z-10", on ? "text-slate-600" : "text-slate-400")} />
                       <span className="relative z-10">{item.label}</span>
-                      {item.badge ? (
-                        <span className="relative z-10 ml-auto rounded-full bg-brand-500 px-1.5 py-0.5 text-[9px] font-bold tracking-wide text-white uppercase">
-                          {item.badge}
-                        </span>
-                      ) : null}
                     </Link>
                   );
                 })}
@@ -117,25 +107,25 @@ export function AppShell({ children }: { children: ReactNode }) {
           ))}
         </nav>
 
-        <div className="mx-3 mb-4 rounded-2xl border border-white/60 bg-gradient-to-br from-brand-500/10 via-violet-500/10 to-amber-400/10 p-3.5">
+        <div className="mx-3 mb-4 rounded-2xl border border-slate-200/70 bg-slate-50 p-3">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-xs font-bold text-white shadow-[0_6px_16px_-6px_rgba(220,53,69,0.6)]">
-              FR
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-500 text-[11px] font-bold text-white shadow-[0_5px_12px_-6px_rgba(220,53,69,0.45)]">
+              {utilisateur.nom.slice(0, 2).toUpperCase()}
             </span>
-            <div className="text-xs">
-              <p className="font-bold text-ink">Ferot</p>
-              <p className="text-slate-500">Accompagnement pédagogique</p>
+            <div className="min-w-0 text-[12px]">
+              <p className="truncate font-bold text-ink">{utilisateur.nom}</p>
+              <p className="truncate text-[11px] text-slate-500">{utilisateur.fonction}</p>
             </div>
           </div>
-          <p className="mt-2.5 rounded-lg bg-white/60 px-2 py-1 text-center text-[10px] font-bold tracking-wide text-brand-600 uppercase">
-            Mode démo école
+          <p className="mt-2 rounded-lg bg-white px-2 py-1 text-center text-[10px] font-bold tracking-wide text-brand-600 uppercase ring-1 ring-slate-200/70">
+            {ROLE_LABEL[utilisateur.role]}
           </p>
         </div>
       </aside>
 
       {/* ── Contenu ── */}
       <div className="min-w-0 flex-1">
-        <header className="glass sticky top-4 z-40 mb-5 flex flex-wrap items-center justify-between gap-3 px-5 py-3.5">
+        <header className="glass sticky top-0 z-40 mb-5 flex flex-wrap items-center justify-between gap-3 rounded-none px-5 py-3.5">
           <div className="min-w-0">
             <h1 className="truncate text-base font-bold tracking-tight text-ink">{meta.titre}</h1>
             <p className="truncate text-xs text-slate-500">{meta.sousTitre}</p>
@@ -148,13 +138,10 @@ export function AppShell({ children }: { children: ReactNode }) {
                 className="glass-soft w-48 rounded-xl py-2 pr-3 pl-8 text-sm outline-none placeholder:text-slate-400 focus:w-64 focus:bg-white/70 focus:ring-2 focus:ring-brand-300/50"
               />
             </div>
-            <span className="hidden text-right text-[11px] text-slate-400 xl:block">
+            <span className="hidden text-right text-xs text-slate-400 xl:block">
               <span className="block font-semibold text-slate-600">{formatDate(AUJOURDHUI)}</span>
               Année scolaire {ANNEE_SCOLAIRE}
             </span>
-            <Link href="/bulletins?nouveau=1" className="btn-gradient px-3.5 py-2">
-              <Plus size={15} /> Ajouter un élève
-            </Link>
           </div>
         </header>
 
@@ -163,7 +150,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="pb-8"
+          className="px-5 pb-6"
         >
           {children}
         </motion.main>

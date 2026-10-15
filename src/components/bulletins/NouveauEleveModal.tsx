@@ -89,7 +89,7 @@ export function NouveauEleveModal({
           </Champ>
         </div>
 
-        <p className="mt-5 mb-2 text-[11px] font-bold tracking-[0.12em] text-slate-400 uppercase">
+        <p className="mt-5 mb-2 text-xs font-bold tracking-[0.12em] text-slate-400 uppercase">
           Bulletin — matières et notes
         </p>
         <div className="space-y-2">

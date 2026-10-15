@@ -35,7 +35,7 @@ export function Bulletin({ eleveId }: { eleveId: string }) {
                 <span className={cn("font-medium", pct < 50 ? "text-brand-600" : "text-slate-700")}>
                   {l.matiere}
                   {pct < 50 ? (
-                    <span className="ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-[10px] font-bold text-brand-600">
+                    <span className="ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-xs font-bold text-brand-600">
                       PRIORITAIRE
                     </span>
                   ) : null}

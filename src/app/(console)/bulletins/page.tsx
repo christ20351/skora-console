@@ -63,7 +63,7 @@ function BulletinsInterne() {
                         {eleve.prenom} {eleve.nom}
                       </span>
                       {eleve.id === creeId ? (
-                        <span className="rounded-full bg-emerald-400/15 px-2 py-0.5 text-[10px] font-bold text-emerald-600 ring-1 ring-emerald-300/40">
+                        <span className="rounded-full bg-emerald-400/15 px-2 py-0.5 text-xs font-bold text-emerald-600 ring-1 ring-emerald-300/40">
                           Nouveau
                         </span>
                       ) : null}
@@ -74,7 +74,7 @@ function BulletinsInterne() {
                     </p>
                   </div>
                   <div className="hidden text-right sm:block">
-                    <p className="text-[10px] font-bold tracking-[0.12em] text-slate-400 uppercase">
+                    <p className="text-xs font-bold tracking-[0.12em] text-slate-400 uppercase">
                       Bulletin d'entrée
                     </p>
                     {dernier ? (
